@@ -32,7 +32,7 @@
       stage('TF Apply') {
         steps {
           withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awsjuan', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-            sh 'terraform apply -input=false'
+            sh 'terraform apply -input=false -auto-approve'
           }
         }
       }
