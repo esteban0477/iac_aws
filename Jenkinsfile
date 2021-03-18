@@ -15,8 +15,8 @@
       stage('TF Init&Plan') {
         steps {
           withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awsjuan', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-            sh 'terraform init'
-            sh 'terraform plan'
+            sh 'terraform init -no-color'
+            sh 'terraform plan -no-color'
           }
         }      
       }
@@ -32,7 +32,7 @@
       stage('TF Apply') {
         steps {
           withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'awsjuan', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-            sh 'terraform apply -input=false -auto-approve'
+            sh 'terraform apply -input=false -auto-approve -no-color'
           }
         }
       }
